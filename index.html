@@ -1,0 +1,674 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZX AMAN | Portfolio</title>
+  <meta name="description" content="ZX AMAN's portfolio website showcasing web development, software development, and design skills." />
+  <style>
+    :root {
+      --bg: #070b12;
+      --card: rgba(16, 24, 38, 0.82);
+      --text: #f3f6ff;
+      --muted: #a8b0c2;
+      --line: rgba(255,255,255,0.08);
+      --accent: #ff3b3b;
+      --accent-2: #ff7777;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --radius: 24px;
+      --max: 1180px;
+    }* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255,59,59,0.18), transparent 26%),
+    radial-gradient(circle at top right, rgba(255,119,119,0.12), transparent 22%),
+    linear-gradient(180deg, #05070c 0%, #0a101a 100%);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.wrap {
+  width: min(calc(100% - 32px), var(--max));
+  margin: 0 auto;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(18px);
+  background: rgba(6,8,13,0.72);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--accent), #ff9a9a);
+  color: white;
+  font-size: 1rem;
+  box-shadow: 0 10px 30px rgba(255,59,59,0.25);
+  flex: 0 0 auto;
+  font-weight: 900;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.nav-links a {
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+
+.hero { padding: 72px 0 36px; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.9fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.hero-main,
+.hero-side,
+.section-card {
+  background: linear-gradient(180deg, rgba(17,26,43,0.94), rgba(11,18,29,0.9));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+}
+
+.hero-main {
+  padding: 38px;
+  position: relative;
+  overflow: hidden;
+  min-height: 390px;
+}
+
+.hero-main::before {
+  content: "";
+  position: absolute;
+  inset: auto -40px -120px auto;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,59,59,0.22), transparent 64%);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255,59,59,0.12);
+  color: #ffb3b3;
+  border: 1px solid rgba(255,59,59,0.16);
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff, #ff9090 52%, #ff3b3b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  color: var(--muted);
+  max-width: 62ch;
+  line-height: 1.7;
+  font-size: 1.02rem;
+  margin: 18px 0 28px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+}
+
+.btn:hover { transform: translateY(-2px); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), #ff7777);
+  color: white;
+  box-shadow: 0 12px 34px rgba(255,59,59,0.28);
+}
+.btn-secondary {
+  background: rgba(255,255,255,0.03);
+  border-color: var(--line);
+  color: var(--text);
+}
+
+.hero-side {
+  padding: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.stat,
+.mini-card,
+.skill,
+.project-card,
+.contact-card,
+.profile-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+
+.stat { padding: 18px; }
+
+.stat strong {
+  display: block;
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.stat span { color: var(--muted); font-size: 0.92rem; }
+
+.profile-card {
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(255,59,59,0.12), rgba(255,255,255,0.02));
+}
+
+.profile-card h3 { margin: 0 0 8px; }
+.profile-card p { margin: 0; color: var(--muted); line-height: 1.7; }
+
+.section { padding: 18px 0 36px; }
+
+.section-card { padding: 28px; }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  letter-spacing: -0.03em;
+}
+
+.section-head p { margin: 0; color: var(--muted); max-width: 60ch; line-height: 1.6; }
+
+.about-grid,
+.projects-grid,
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.about-box {
+  grid-column: span 7;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 22px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+
+.highlights {
+  grid-column: span 5;
+  display: grid;
+  gap: 16px;
+}
+
+.mini-card { padding: 18px; }
+.mini-card h4 { margin: 0 0 8px; }
+.mini-card p { margin: 0; color: var(--muted); line-height: 1.65; }
+
+.project-card {
+  grid-column: span 4;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 280px;
+}
+
+.project-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,59,59,0.14);
+  color: #ffb9b9;
+  border: 1px solid rgba(255,59,59,0.16);
+  font-size: 0.82rem;
+  flex: 0 0 auto;
+}
+
+.project-card h3 { margin: 0; }
+.project-card p { margin: 0; color: var(--muted); line-height: 1.65; }
+
+.project-links {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.project-links a,
+.contact-link {
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.project-links a {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-size: 0.92rem;
+  background: rgba(255,255,255,0.02);
+}
+
+.project-links a:hover,
+.contact-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,59,59,0.24);
+  background: rgba(255,59,59,0.06);
+}
+
+.skills-list {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.skill {
+  padding: 18px;
+  color: var(--muted);
+}
+
+.skill strong {
+  display: block;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.contact-grid { align-items: start; }
+
+.contact-card {
+  padding: 22px;
+  grid-column: span 6;
+}
+
+.contact-links {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--line);
+}
+
+.contact-link span { color: var(--muted); font-size: 0.95rem; }
+
+.footer {
+  padding: 24px 0 40px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 960px) {
+  .hero-grid,
+  .contact-grid,
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-box,
+  .highlights,
+  .contact-card {
+    grid-column: auto;
+  }
+
+  .project-card { grid-column: span 6; }
+  .skills-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .nav-inner { flex-direction: column; align-items: flex-start; }
+  .nav-links { gap: 12px; }
+  .hero { padding-top: 40px; }
+  .hero-main { padding: 24px; min-height: auto; }
+  .section-card { padding: 20px; }
+  .project-card,
+  .skills-list { grid-column: span 12; grid-template-columns: 1fr; }
+  .skills-list { gap: 12px; }
+  .stat-grid { grid-template-columns: 1fr; }
+  .hero-actions,
+  .project-links { width: 100%; }
+  .btn { width: 100%; }
+  .section-head { flex-direction: column; align-items: flex-start; }
+}
+
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">
+        <div class="logo">ZX</div>
+        <div>
+          <div>ZX AMAN</div>
+          <div style="color: var(--muted); font-size: 0.88rem; font-weight: 500;">Web & Software Developer</div>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-main reveal">
+          <div class="eyebrow">Available for freelance, collaborations & full-time roles</div>
+          <h1>Building <span class="gradient-text">clean, modern</span> digital experiences.</h1>
+          <p class="subtitle">
+            I am ZX AMAN (AMAN), a developer focused on website development, website design,
+            software design, and software development. I work with C++, C#, HTML, CSS, and JavaScript
+            to build premium, responsive, and user-friendly products.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+          </div>
+        </div><aside class="hero-side reveal">
+      <div class="profile-card">
+        <h3>Quick Profile</h3>
+        <p>
+          Discord: <strong>zxc_aman</strong><br />
+          Instagram: <strong>hdx.1.0</strong><br />
+          Focus: UI, frontend, software development
+        </p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><strong>3+</strong><span>Core skills</span></div>
+        <div class="stat"><strong>100%</strong><span>Responsive design</span></div>
+        <div class="stat"><strong>Clean</strong><span>Premium UI style</span></div>
+        <div class="stat"><strong>Fast</strong><span>Modern structure</span></div>
+      </div>
+      <div class="profile-card">
+        <h3>Design Direction</h3>
+        <p>
+          Minimal dark mode with red accents, soft glass cards, strong spacing, and a premium layout
+          built to impress clients and employers.
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="wrap section-card reveal">
+    <div class="section-head">
+      <div>
+        <h2>About Me</h2>
+        <p>A concise introduction that tells visitors who you are and what you do best.</p>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-box">
+        <strong style="color: var(--text);">I am ZX AMAN, also known as AMAN.</strong><br />
+        I create modern websites and software with a focus on clean interfaces, practical user experience,
+        and reliable code. My strengths include C++, C#, website development, website design,
+        software design, and software development. I enjoy building products that look professional,
+        feel smooth, and solve real problems.
+      </div>
+
+      <div class="highlights">
+        <div class="mini-card">
+          <h4>What I Deliver</h4>
+          <p>Responsive portfolio websites, custom UI, business websites, and software-oriented digital solutions.</p>
+        </div>
+        <div class="mini-card">
+          <h4>Work Style</h4>
+          <p>Clean structure, premium visuals, fast loading pages, and mobile-first design thinking.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <div class="wrap section-card reveal">
+    <div class="section-head">
+      <div>
+        <h2>Projects</h2>
+        <p>Replace these placeholders with your best work. These examples are written to fit a professional portfolio.</p>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+      <article class="project-card">
+        <div class="project-top">
+          <h3>Portfolio Website</h3>
+          <span class="badge">Featured</span>
+        </div>
+        <p>A clean personal portfolio site with premium dark UI, responsive layout, and strong personal branding.</p>
+        <p><strong style="color: var(--text);">Tech:</strong> HTML, CSS, JavaScript</p>
+        <div class="project-links">
+          <a href="#">Live Demo</a>
+          <a href="#">Source Code</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">
+          <h3>Discord Community Website</h3>
+          <span class="badge">Community</span>
+        </div>
+        <p>A modern landing page for a Discord server with clear join flow, server info, and a strong CTA section.</p>
+        <p><strong style="color: var(--text);">Tech:</strong> HTML, CSS, JavaScript</p>
+        <div class="project-links">
+          <a href="#">Live Demo</a>
+          <a href="#">Source Code</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">
+          <h3>Software UI Dashboard</h3>
+          <span class="badge">UI/UX</span>
+        </div>
+        <p>A dashboard concept with cards, analytics blocks, and organized layout for software tools or admin panels.</p>
+        <p><strong style="color: var(--text);">Tech:</strong> HTML, CSS, JavaScript</p>
+        <div class="project-links">
+          <a href="#">Live Demo</a>
+          <a href="#">Source Code</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <div class="wrap section-card reveal">
+    <div class="section-head">
+      <div>
+        <h2>Skills</h2>
+        <p>A clear skills section helps employers quickly understand your technical strengths.</p>
+      </div>
+    </div>
+
+    <div class="skills-list">
+      <div class="skill"><strong>Frontend</strong>HTML, CSS, JavaScript, responsive design, UI layouts</div>
+      <div class="skill"><strong>Programming</strong>C++, C#, logic building, problem solving</div>
+      <div class="skill"><strong>Design</strong>Clean UI, premium visual style, user-focused experience</div>
+      <div class="skill"><strong>Tools</strong>Git, GitHub, VS Code, debugging, project structure</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="wrap section-card reveal">
+    <div class="section-head">
+      <div>
+        <h2>Contact</h2>
+        <p>Make it easy for visitors to reach you on your active platforms.</p>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3 style="margin-top: 0;">Let’s build something professional</h3>
+        <p style="color: var(--muted); line-height: 1.7;">
+          For freelance work, collaborations, or opportunities, connect with me through Discord or Instagram.
+        </p>
+        <div class="contact-links">
+          <a class="contact-link" href="https://discord.com" target="_blank" rel="noreferrer">
+            <strong>Discord</strong>
+            <span>@zxc_aman</span>
+          </a>
+          <a class="contact-link" href="https://instagram.com" target="_blank" rel="noreferrer">
+            <strong>Instagram</strong>
+            <span>@hdx.1.0</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <h3 style="margin-top: 0;">Portfolio Notes</h3>
+        <p style="color: var(--muted); line-height: 1.7;">
+          Use a single strong color theme, keep content short and readable, and make every section easy to scan.
+          This design is intentionally premium, minimal, and mobile-friendly.
+        </p>
+        <div style="margin-top: 16px; color: var(--muted); line-height: 1.8;">
+          <strong style="color: var(--text);">Recommended style:</strong><br />
+          Dark mode + red accent + glass cards + smooth hover animations
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>  <footer class="footer">
+    © <span id="year"></span> ZX AMAN. All rights reserved.
+  </footer>  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const elements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    elements.forEach((el) => observer.observe(el));
+  </script></body>
+</html>
